@@ -13,7 +13,7 @@ class ProxySpider(scrapy.Spider):
     start_urls = [
     ]
     URL = 'http://www.xicidaili.com/nn/%s'
-    for i in range(1, 10):
+    for i in range(1, 1):
         start_urls.append(URL % str(i))
 
     def parse(self, response):
