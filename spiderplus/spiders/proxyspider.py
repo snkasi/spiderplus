@@ -13,7 +13,7 @@ class ProxySpider(scrapy.Spider):
     start_urls = [
     ]
     URL = 'http://www.xicidaili.com/nn/%s'
-    for i in range(1, 1):
+    for i in range(1, 2):
         start_urls.append(URL % str(i))
 
     def parse(self, response):
@@ -28,8 +28,8 @@ class ProxySpider(scrapy.Spider):
             result['addr'] = (li[3].xpath('./td/a/text()').extract() + [''])[0]
             result['trans'] = (li[4].xpath('./text()').extract() + [''])[0]
             result['method'] = (li[5].xpath('./text()').extract() + [''])[0]
-            result['speed'] = li[6].xpath('./div/@title').extract()[0].strip(u'秒')
-            result['connect_time'] = li[7].xpath('./div/@title').extract()[0].strip(u'秒')
+            result['speed'] = li[6].xpath('./div/@title').extract()[0]
+            result['connect_time'] = li[7].xpath('./div/@title').extract()[0]
             result['alive_time'] = (li[8].xpath('./text()').extract() + [''])[0]
             result['verify_time'] = (li[9].xpath('./text()').extract() + [''])[0]
             yield result
